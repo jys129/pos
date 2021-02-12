@@ -1,4 +1,5 @@
 const axios = require("axios");
+const url = require("url");
 const cheerio = require("cheerio");
 const log = console.log;
 
@@ -53,11 +54,13 @@ async function main() {
 
 	// 부서 리스트 개수 만큼
 	for (var organization of plist) {
-		delete organization["group"];
-		organization.Cookie = cookie; // attach cookie to axiosInstance for future requests
-		console.log(JSON.stringify(organization)); // 10, 20, 30
-		let html = await webInstance.post(BASE_URL + organization.action, {
-			headers: organization,
+		// delete organization["group"];
+		// organization.Cookie = cookie; // attach cookie to axiosInstance for future requests
+		// console.log(JSON.stringify(organization)); // 10, 20, 30
+		const params = new url.URLSearchParams(organization);
+
+		let html = await webInstance.post(BASE_URL + organization.action + "?" + params, {
+			method: "post",
 		});
 		console.log(html.data);
 	}
