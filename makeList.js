@@ -5,12 +5,13 @@ const cheerio = require("cheerio");
 const fs = require("fs");
 
 // 회사 코드
-const COMPANY_CODE = "poscochem";
+const COMPANY_CODE = "poscoenergy";
 // posco, 포스코
 // poscoenc, 포스코건설
 // poscoict, 포스코ICT
 // poscochem, 포스코케미칼
 // poscoplantec, 포스코플랜텍
+// poscoenergy, 포스코에너지
 
 // URL 정보
 const BASE_URL = "https://findpeople.posco.co.kr:4443/S35/S35020/s35050f10/";
@@ -21,30 +22,6 @@ const MAIN_URL = BASE_URL + "s35050f020.do?company=" + COMPANY_CODE + "&companyT
 const webInstance = axios.create({ baseURL: BASE_URL });
 
 const ORGANIZATION_FILENAME = "organizationList_" + COMPANY_CODE + ".json";
-
-// getHtml()
-// 	.then((html) => {
-// 		let ulList = [];
-
-// 		console.log(html);
-// 		const $ = cheerio.load(html.data);
-// 		const $bodyList = $("div.headline-list ul").children("li.section02");
-
-// 		$bodyList.each(function (i, elem) {
-// 			ulList[i] = {
-// 				title: $(this).find("strong.news-tl a").text(),
-// 				url: $(this).find("strong.news-tl a").attr("href"),
-// 				image_url: $(this).find("p.poto a img").attr("src"),
-// 				image_alt: $(this).find("p.poto a img").attr("alt"),
-// 				summary: $(this).find("p.lead").text().slice(0, -11),
-// 				date: $(this).find("span.p-time").text(),
-// 			};
-// 		});
-
-// 		const data = ulList.filter((n) => n.title);
-// 		return data;
-// 	})
-// 	.then((res) => log(res));
 
 async function initWebInstance() {
 	let resp = await axios.get(LOGIN_URL);

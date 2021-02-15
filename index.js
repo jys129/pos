@@ -5,12 +5,13 @@ const cheerio = require("cheerio");
 const fs = require("fs");
 
 // 회사 코드
-const COMPANY_CODE = "poscoplantec";
+const COMPANY_CODE = "poscoenergy";
 // posco, 포스코
 // poscoenc, 포스코건설
 // poscoict, 포스코ICT
 // poscochem, 포스코케미칼
 // poscoplantec, 포스코플랜텍
+// poscoenergy, 포스코에너지
 
 // URL 정보
 const BASE_URL = "https://findpeople.posco.co.kr:4443/S35/S35020/s35050f10/";
